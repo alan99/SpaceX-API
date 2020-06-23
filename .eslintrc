@@ -1,28 +1,24 @@
 {
-  "plugins": [
-    "security",
-    "mongodb",
-    "jest"
-  ],
+  "plugins": ["security", "mongodb", "jest", "no-secrets"],
   "env": {
     "node": true,
     "jest": true,
     "mongo": true
   },
-  "extends": [
-    "plugin:security/recommended",
-    "airbnb-base"
-  ],
+  "extends": ["plugin:security/recommended", "airbnb-base"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020,
     "impliedStrict": true
   },
   "rules": {
-    "no-restricted-syntax" : 0,
     "no-console": 0,
-    "class-methods-use-this": 0,
-    "no-param-reassign": 0,
-    "security/detect-object-injection": 0
+    "no-secrets/no-secrets": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["test/*.test.js", "scripts/*.js"]
+      }
+    ]
   }
 }
